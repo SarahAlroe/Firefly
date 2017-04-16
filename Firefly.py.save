@@ -1,0 +1,19 @@
+#Ey boss, launch this one.
+from neopixel import *
+#CONST
+BUG_COUNT=6
+
+
+    
+  #Light arrays
+  bugs = []
+  
+  #Init neopixels
+  strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS)
+  strip.begin()
+  
+  for i in range(BUG_COUNT):
+    bugs.append(Bug(i))
+  
+  def updateB0ugs(self):
+
