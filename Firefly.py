@@ -64,4 +64,9 @@ if __name__ == '__main__':
       time.sleep(0.04) #25 fps
   except KeyboardInterrupt:
     pass
+  #Clean exit
+  for bug in bugs:
+    bug.setColor((0,0,0))
+    bug.paint()
+  strip.show()
   GPIO.cleanup()
