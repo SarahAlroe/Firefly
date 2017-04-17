@@ -14,10 +14,23 @@ LED_BRIGHTNESS = 255           # Set to 0 for darkest and 255 for brightest
 LED_INVERT     = False         # True to invert the signal (when using NPN transistor level shift)
 FLY_PINS       = [16,22,32,36] # Pins on which flies are connected.
 
+animation_count = 0
+
 #DEFS
+
+def animateAll():
+
+    global animation_count 
+    animation_count += 1
+    for bug in bugs:
+        bug.setColor((animation_count %255,100,0))
+        bug.setIntensity(animation_count % 255)
+
+    for fly in flies:
+        fly.setIntensity(animation_count % 70)
+
 def paintAll():
   for bug in bugs:
-    #update strip
     bug.paint()
   strip.show()
 
@@ -46,8 +59,9 @@ if __name__ == '__main__':
   #Run Loop
   try:
     while True:
+      animateAll()
       paintAll()
-      time.sleep(0.1)
+      time.sleep(0.04) #25 fps
   except KeyboardInterrupt:
     pass
   GPIO.cleanup()
