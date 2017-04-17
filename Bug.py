@@ -31,7 +31,8 @@ class Bug:
 
   def paint(self):
       if self.is_updated:
-        c = Color(self.color[0], self.color[1], self.color[2], self.intensity)
+        nIntensity = self.intensity/100.0
+        c = Color(int(self.color[0]*nIntensity), int(self.color[1]*nIntensity), int(self.color[2]*nIntensity))
         self.strip.setPixelColor(self.getNumber(), c)
         is_updated = False
 
