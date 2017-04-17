@@ -9,7 +9,7 @@ class Fly:
 
   def __setup(self):
     GPIO.setup(self.pin, GPIO.OUT)
-    self.output = GPIO.PWM(self.pin,500)
+    self.output = GPIO.PWM(self.pin,100)
     self.output.start(self.intensity)
 
   def getPin(self):

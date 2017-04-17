@@ -23,11 +23,11 @@ def animateAll():
     global animation_count 
     animation_count += 1
     for bug in bugs:
-        bug.setColor((animation_count %255,100,0))
-        bug.setIntensity(animation_count % 255)
+        bug.setColor((5,5,0))
+        bug.setIntensity(0)
 
     for fly in flies:
-        fly.setIntensity(animation_count % 70)
+        fly.setIntensity(2)
 
 def paintAll():
   for bug in bugs:
