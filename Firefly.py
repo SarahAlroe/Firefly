@@ -15,12 +15,14 @@ LED_INVERT     = False         # True to invert the signal (when using NPN trans
 FLY_PINS       = [16,22,32,36] # Pins on which flies are connected.
 
 #DEFS
-def updateBugs():
-  #TODO: Consider doing this directly in the bug class similar to fly
+def paintAll():
   for bug in bugs:
     #update strip
-    strip.setPixelColor(bug.getNumber(),bug.getColor())
+    bug.paint()
   strip.show()
+
+  for fly in flies:
+    fly.paint()
 
 #RUN
 if __name__ == '__main__':
@@ -33,20 +35,18 @@ if __name__ == '__main__':
   strip.begin()
 
   #Init buglist
-  for i in range(LED_COUNT):
-    bugs.append(Bug(i))
+  for led_number in range(LED_COUNT):
+    bugs.append(Bug(strip, led_number))
   
   #Init flylist
   GPIO.setmode(GPIO.BOARD)
-  GPIO.setup(FLY_PINS, GPIO.OUT)
   for f in FLY_PINS:
-    flies.append(Fly(f,40))
-    #Set GPIO
+    flies.append(Fly(f))
 
   #Run Loop
   try:
     while True:
-      updateBugs()
+      paintAll()
       time.sleep(0.1)
   except KeyboardInterrupt:
     pass
