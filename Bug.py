@@ -1,40 +1,25 @@
 from neopixel import *
-
-class Bug:
+from Insect import *
+class Bug( Insect ):
 
   def __init__(self, strip, number):
+    Insect.__init__(self)
     self.strip = strip
     self.number = number
 
-    self.animCounter = 0
     self.color = (0,0,0)
-    self.intensity = 0
-    self.__update()
-
   
   def getNumber(self):
     return self.number
 
   def setColor(self, color):
       self.color = color
-      self.__update()
   
   def getColor(self):
     return self.color
 
-  def setIntensity(self, intensity):
-      self.intensity = intensity
-      self.__update()
-
-  def getIntensity(self):
-      return intensity
 
   def paint(self):
-      if self.is_updated:
-        nIntensity = self.intensity/100.0
-        c = Color(int(self.color[0]*nIntensity), int(self.color[1]*nIntensity), int(self.color[2]*nIntensity))
-        self.strip.setPixelColor(self.getNumber(), c)
-        is_updated = False
-
-  def __update(self):
-      self.is_updated = True
+      n = self.getIntensity()
+      c = Color(int(self.color[0]*n), int(self.color[1]*n), int(self.color[2]*n))
+      self.strip.setPixelColor(self.getNumber(), c)

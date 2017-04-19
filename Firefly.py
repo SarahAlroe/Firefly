@@ -4,6 +4,7 @@ import RPi.GPIO as GPIO
 from neopixel import *
 from Bug import *
 from Fly import *
+from SimplePulseBehaviour import *
 
 #CONST
 LED_COUNT      = 6             # Number of LED pixels.
@@ -24,10 +25,10 @@ def animateAll():
     animation_count += 1
     for bug in bugs:
         bug.setColor((255,255,0))
-        bug.setIntensity(1)
+        bug.behave()
 
     for fly in flies:
-        fly.setIntensity(5)
+        fly.behave()
 
 def paintAll():
   for bug in bugs:
@@ -49,12 +50,16 @@ if __name__ == '__main__':
 
   #Init buglist
   for led_number in range(LED_COUNT):
-    bugs.append(Bug(strip, led_number))
+    bug = Bug(strip, led_number)
+    bug.setBehaviour(SimplePulseBehaviour(bug))
+    bugs.append(bug)
   
   #Init flylist
   GPIO.setmode(GPIO.BOARD)
-  for f in FLY_PINS:
-    flies.append(Fly(f))
+  for pin in FLY_PINS:
+    fly = Fly(pin)
+    fly.setBehaviour(SimplePulseBehaviour(fly))
+    flies.append(fly)
 
   #Run Loop
   try:
