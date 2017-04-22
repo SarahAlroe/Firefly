@@ -5,6 +5,7 @@ from neopixel import *
 from Bug import *
 from Fly import *
 from SimplePulseBehaviour import *
+from FlyBehaviour import *
 
 #CONST
 LED_COUNT      = 6             # Number of LED pixels.
@@ -58,7 +59,7 @@ if __name__ == '__main__':
   GPIO.setmode(GPIO.BOARD)
   for pin in FLY_PINS:
     fly = Fly(pin)
-    fly.setBehaviour(SimplePulseBehaviour(fly))
+    fly.setBehaviour(FireFlyBehaviour(fly))
     flies.append(fly)
 
   #Run Loop
