@@ -1,7 +1,7 @@
 import math
 from random import randint
 
-class FireFlyBehaviour:
+class FlyBehaviour:
     def __init__(self, insect):
         self.insect = insect
         self.c = 0
@@ -9,7 +9,7 @@ class FireFlyBehaviour:
         self.initIntensity = self.insect.getIntensity()
 
     def doBehave(self):
-        if self.c <= self.cycleLength:
+        if self.c < self.cycleLength:
             scale = math.sin(math.pi / self.cycleLength * self.c)
             self.insect.setIntensity(self.initIntensity * scale * 0.2)
             self.c += 1

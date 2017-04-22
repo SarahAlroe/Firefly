@@ -59,7 +59,7 @@ if __name__ == '__main__':
   GPIO.setmode(GPIO.BOARD)
   for pin in FLY_PINS:
     fly = Fly(pin)
-    fly.setBehaviour(FireFlyBehaviour(fly))
+    fly.setBehaviour(FlyBehaviour(fly))
     flies.append(fly)
 
   #Run Loop
