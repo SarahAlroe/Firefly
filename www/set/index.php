@@ -1,4 +1,5 @@
 <?php
+$ttl = 20;
 $r = new Redis();
 $r->connect('127.0.0.1');
 $r->select(0);
@@ -15,7 +16,10 @@ $r->set('firefly_bug_'.$bug, json_encode($bugValue));
 };
 
 if(isset($_REQUEST["activity"])){
-$r->set('firefly_activity',$_REQUEST["activity"]);
+	if(isset($_REQUEST["ttl"])){
+		$ttl=$_REQUEST["ttl"];
+	}
+	$r->set('firefly_activity_'.uniqid(),$_REQUEST["activity"],$ttl);
 };
 
 include_once("../index.php");
