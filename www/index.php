@@ -10,19 +10,20 @@ sort($bugs);
 $bugValues = $r->mGet($bugs);
 
 $bugDict = array();
-$i=0;
+$i = 0;
 
 foreach($bugs as $bug){
-	$bugDict[$i]=$bugValues[$i];
-	$i++;}
+  $bugDict[$i] = $bugValues[$i];
+  $i++;
+}
 
 $activityKeys = $r->keys('firefly_activit*');
 $activityValues = $r->mGet($activityKeys);
 
 foreach($activityValues as $activityValue){
-	if($activityValue > $activity){
-		$activity = $activityValue;
-	}
+  if($activityValue > $activity){
+    $activity = $activityValue;
+  }
 }
 
 $response = array('activity' => $activity, 'bugs' => $bugDict);
