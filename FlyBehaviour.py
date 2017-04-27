@@ -17,4 +17,5 @@ class FlyBehaviour:
             self.insect.setIntensity(0)
             if randint(1,100) == 1:
                 self.c = 0
+                self.cycleLength = randint(5,50)
 

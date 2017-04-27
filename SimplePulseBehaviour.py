@@ -5,7 +5,7 @@ class SimplePulseBehaviour:
     def __init__(self, insect):
         self.insect = insect
         self.c = 0
-        self.cycleLength = randint(10,100)
+        self.cycleLength = randint(60,200)
         self.initIntensity = self.insect.getIntensity()
 
     def doBehave(self):
