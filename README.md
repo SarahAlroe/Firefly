@@ -4,13 +4,20 @@ Firefly is a python controler for neopixels and leds on Raspberry Pi, emulating 
 It will eventually be able sync changes in ligting across multiple clients and support interactivity.
 
 ## Server interaction
-Get update: `firefly.fenrok.tk `  
+Get update: `[site root] `  
 Response: `{"activity":"XX","bugs":["{\"r\":XX,\"g\":XX,\"b\":XX}",(...)]}`  
 
 Control:
-Reset server: `firefly.fenrok.tk/setup/?bugs=XX`  
-Set bug color: `firefly.fenrok.tk/set/?bug=xx[&r=XX][&g=XX][&b=XX]` (rgb optional, if not set uses previous value.)
-Set activity: `firefly.fenrok.tk/set/?activity=xx[&ttl=XX]` (ttl in seconds, defaults to 20)
+Reset server: `[site root]/setup/?bugs=XX`  
+Set bug color: `[site root]/set/?bug=xx[&r=XX][&g=XX][&b=XX]` (rgb optional, if not set uses previous value.)
+Set activity: `[site root]/set/?activity=xx[&ttl=XX]` (ttl in seconds, defaults to 20)
+
+## Update service params
+Send state of system:
+`sysStatSend.sh [pixel nr]`
+
+Send devices on network:
+`networkDeviceSend.sh [pixel nr] [MAC r] [MAC g] [MAC b]`
 
 ## Dependencies
 Client:
@@ -20,6 +27,13 @@ Client:
 Server:
 * PHP
 * Redis
+
+Update Services:
+* grep
+* awk
+* free
+* hdparm
+* curl
 
 ## Notes to self  
 * 6 bugs are connected on pin 12 (BCM 18)
