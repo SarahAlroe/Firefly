@@ -24,4 +24,4 @@ fi;
 
 b=$((counter*255/4))
 
-curl --data "bug=1&r=$r&g=$g&b=$b" http://firefly.fenrok.tk/set/
+curl --data "bug=$1&r=$r&g=$g&b=$b" http://firefly.fenrok.tk/set/
